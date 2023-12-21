@@ -1,0 +1,62 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+  "name": "Next.js Dev Tempate",
+  "build": {
+    // Sets the run context to one level up instead of the .devcontainer folder.
+    "context": "..",
+    "dockerfile": "../Dockerfile",
+    // 'target' specifies the target build stage in a multi-stage Docker build
+    "target": "dev"
+  },
+  // Mount the local workspace folder to the container's workspace directory
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
+  // Mount a volume for node_modules to persist and share across container instances
+  "mounts": [
+    "source=node_modules_volume,target=/workspace/next-app/node_modules,type=volume"
+  ],
+  // Execute commands after the container is created, e.g., starting the development server
+  "postCreateCommand": "cd /workspace/next-app && pnpm dev",
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Code completion and AI
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        // Code formatting and linting
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "oderwat.indent-rainbow",
+        // Project management
+        "Gruntfuggly.todo-tree",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        // Code formatting and linting
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": true,
+          "source.fixAll": true
+        },
+        // Eslint and prettier
+        "prettier.semi": true,
+        // Intent rainbow
+        "indentRainbow.indicatorStyle": "light",
+        "indentRainbow.lightIndicatorStyleLineWidth": 1,
+        "indentRainbow.colors": [
+          "rgba(255,255,64,0.3)",
+          "rgba(127,255,127,0.3)",
+          "rgba(255,127,255,0.3)",
+          "rgba(79,236,236,0.3)"
+        ],
+        // The indent color if the number of spaces is not a multiple of "tabSize".
+        "indentRainbow.errorColor": "rgba(128,32,32,0.6)"
+      }
+    }
+  }
+}
