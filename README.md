@@ -29,34 +29,34 @@ Ensure you have the following installed:
 3. **Developing inside the container**:
    Once the container is running, you can start the development server with the following command:
 
-    ```bash
-    cd /workspace/next-app && pnpm dev
-    ```
+ ```
+ cd /workspace/next-app && pnpm dev
+ ```
 
-   This command is also set as the `postCreateCommand` in the `.devcontainer.json`, so it runs automatically when the container starts.
+This command is also set as the `postCreateCommand` in the `.devcontainer.json`, so it runs automatically when the container starts.
 
 ### Building and Running for Production 🏗️
 
 #### Building the Application:
 To build the application for production, run:
 
-    ```bash
-    docker build -t <your-image-name> .
-    ```
+ ```
+ docker build -t <your-image-name> .
+ ```
 
-   This command compiles your Next.js application and prepares it for deployment.
+This command compiles your Next.js application and prepares it for deployment.
 
 #### Starting the Application:
 After building, you can start your application in production mode with:
     
-    ```bash
-    docker run -p <host-port>:<container-port> <your-image-name>
+ ```
+ docker run -p <host-port>:<container-port> <your-image-name>
 
-    # Example
-    docker run -p 3000:3000 prod-test
-    ```
+ # Example
+ docker run -p 3000:3000 prod-test
+ ```
 
-   This starts the Next.js server on the specified port (default: 3000).
+This starts the Next.js server on the specified port (default: 3000).
 
 ## Scripts 📜
 
